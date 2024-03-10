@@ -1,0 +1,95 @@
+{
+  // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+  // https://github.com/microsoft/vscode-dev-containers/tree/v0.217.4/containers/go
+
+  "name": "DSP-Storm-Damage-on-Urban-Areas",
+  "service": "workspace",
+  "workspaceFolder": "/home/workspaces/DSP-compose",
+  "forwardPorts": ["3000:3000", "8501:8501", "5001:5001"],
+  "shutdownAction": "stopCompose",
+  "dockerComposeFile": ["docker-compose.yaml"],
+
+  // "appPort": [3000, "8921:5000"],
+  // Add the IDs of extensions you want installed when the container is created.
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "ls -alh",
+  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "vscode",
+  // "overrideCommand": true,
+
+  "customizations": {
+    "settings": {
+      "files.insertFinalNewline": true,
+      "files.trimTrailingWhitespace": true,
+      "files.autoSave": "onFocusChange",
+      "python.testing.unittestEnabled": false,
+      "python.testing.autoTestDiscoverOnSaveEnabled": true,
+      "python.analysis.indexing": true,
+      "python.analysis.autoImportCompletions": true,
+      "python.terminal.activateEnvInCurrentTerminal": true,
+      "rewrap.wrappingColumn": 88,
+      "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+      "[python]": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true,
+          "source.organizeImports.ruff": true
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+      },
+      "editor.codeActionsOnSave": {
+        "source.removeUnusedImports": true,
+        "source.organizeImports": true
+      },
+      "scm.defaultViewMode": "tree",
+      // "liveServer.settings.NoBrowser": true,
+      // "liveServer.settings.port": 5000,
+      "terminal.integrated.defaultProfile.linux": "zsh",
+      // "git.autofetch": true,
+      // "git.confirmSync": false,
+      // "git.ignoreMissingGitWarning": true,
+      "prettier.bracketSameLine": true,
+      "prettier.endOfLine": "auto",
+      "editor.tabSize": 4,
+      "editor.formatOnSave": true,
+      "editor.largeFileOptimizations": false,
+      "editor.suggest.preview": true
+    },
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "tamasfe.even-better-toml",
+        "mkxml.vscode-filesize",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "ms-python.pylint",
+        "AykutSarac.jsoncrack-vscode",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "christian-kohler.path-intellisense",
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "donjayamanne.python-extension-pack",
+        "charliermarsh.ruff",
+        "richie5um2.vscode-sort-json",
+        "redhat.vscode-yaml",
+        "visualstudioexptteam.vscodeintellicode",
+        "visualstudiotxptteam.vscodeintellicode-completions",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "christian-kohler.npm-intellisense",
+        "ritwickdey.liveserver",
+        "ms-vscode.wordcount",
+        "streetsidesoftware.code-spell-checker",
+        "redhat.fabric8-analytics",
+        "bierner.github-markdown-preview",
+        "ms-python.isort",
+        "donjayamanne.python-environment-manager"
+      ]
+    }
+  }
+}

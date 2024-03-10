@@ -1,0 +1,71 @@
+version: "3.8"
+services:
+  dsp-dagster:
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: ../src/dsp-dagster/Dockerfile
+    working_dir: /home/workspaces/DSP-compose/dsp-dagster/
+    stdin_open: true
+    tty: true
+    volumes:
+      #   # Update this to wherever you want VS Code to mount the folder of your project
+      - ../src/dsp-dagster:/home/workspaces/DSP-compose/dsp-dagster/
+    entrypoint: [./startup-script.sh]
+    ports:
+      - 3000:3000
+  dsp-streamlit:
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: ../src/dsp-streamlit/Dockerfile
+    working_dir: /home/workspaces/DSP-compose/dsp-streamlit/
+    stdin_open: true
+    tty: true
+    volumes:
+      #   # Update this to wherever you want VS Code to mount the folder of your project
+      - ../src/dsp-streamlit:/home/workspaces/DSP-compose/dsp-streamlit
+      - ../src/dsp-dagster/BIGDATA.duckdb:/home/workspaces/DSP-compose/dsp-streamlit/BIGDATA.duckdb
+      - ../src/dsp-mlflow:/home/workspaces/DSP-compose/dsp-streamlit/mlflow
+    entrypoint: [./startup-script.sh]
+    ports:
+      - 8501:8501
+  dsp-mlflow:
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: ../src/dsp-mlflow/Dockerfile
+    working_dir: /home/workspaces/DSP-compose/dsp-mlflow
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../src/dsp-mlflow:/home/workspaces/DSP-compose/dsp-mlflow/
+    entrypoint: [./startup-script.sh]
+    ports:
+      - 5001:5001
+
+  workspace:
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: ../.devcontainer/docker/Dockerfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ..:/home/workspaces/DSP-compose/
+    working_dir: /home/workspaces/DSP-compose/
+    command: [./startup-script.sh]
+    stdin_open: true
+    tty: true
+    depends_on:
+      - dsp-streamlit
+      - dsp-dagster
+      - dsp-mlflow
+networks:
+  default:
+    driver: bridge
+  servers_default:
+    external: true
