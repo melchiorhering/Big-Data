@@ -1,10 +1,7 @@
 FROM --platform=linux/amd64 python:3.11-buster as builder
 
 # Update and upgrade the package list, install necessary packages, and clean up
-RUN apt-get update && apt-get upgrade -y && apt-get -y install git zsh curl sqlite3 && rm -rf /var/lib/apt/lists/*
-
-# Install oh-my-zsh and the dieter theme
-RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="dieter"/' /root/.zshrc && usermod -s $(which zsh) $(whoami)
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
 RUN pip install poetry
 
@@ -15,5 +12,5 @@ ENV POETRY_NO_INTERACTION=1 \
 
 FROM python:3.11-slim-buster as runtime
 
-# Update & Install NGINX
+# Update
 RUN apt-get update && rm -rf /var/lib/apt/lists/*

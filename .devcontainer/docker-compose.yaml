@@ -1,48 +1,48 @@
 version: "3.8"
 services:
-  dsp-dagster:
+  orchestration:
     networks:
       - default
     build:
       context: .
-      dockerfile: ../src/dsp-dagster/Dockerfile
-    working_dir: /home/workspaces/DSP-compose/dsp-dagster/
+      dockerfile: ../src/orchestration/Dockerfile
+    working_dir: /home/workspaces/BigData/orchestration/
     stdin_open: true
     tty: true
     volumes:
       #   # Update this to wherever you want VS Code to mount the folder of your project
-      - ../src/dsp-dagster:/home/workspaces/DSP-compose/dsp-dagster/
+      - ../src/orchestration:/home/workspaces/BigData/orchestration/
     entrypoint: [./startup-script.sh]
     ports:
       - 3000:3000
-  dsp-streamlit:
+  streamlit:
     networks:
       - default
     build:
       context: .
-      dockerfile: ../src/dsp-streamlit/Dockerfile
-    working_dir: /home/workspaces/DSP-compose/dsp-streamlit/
+      dockerfile: ../src/streamlit/Dockerfile
+    working_dir: /home/workspaces/BigData/streamlit/
     stdin_open: true
     tty: true
     volumes:
       #   # Update this to wherever you want VS Code to mount the folder of your project
-      - ../src/dsp-streamlit:/home/workspaces/DSP-compose/dsp-streamlit
-      - ../src/dsp-dagster/BIGDATA.duckdb:/home/workspaces/DSP-compose/dsp-streamlit/BIGDATA.duckdb
-      - ../src/dsp-mlflow:/home/workspaces/DSP-compose/dsp-streamlit/mlflow
+      - ../src/streamlit:/home/workspaces/BigData/streamlit
+      - ../src/orchestration/BIGDATA.duckdb:/home/workspaces/BigData/streamlit/BIGDATA.duckdb
+      - ../src/mlflow:/home/workspaces/BigData/streamlit/mlflow
     entrypoint: [./startup-script.sh]
     ports:
       - 8501:8501
-  dsp-mlflow:
+  mlflow:
     networks:
       - default
     build:
       context: .
-      dockerfile: ../src/dsp-mlflow/Dockerfile
-    working_dir: /home/workspaces/DSP-compose/dsp-mlflow
+      dockerfile: ../src/mlflow/Dockerfile
+    working_dir: /home/workspaces/BigData/mlflow
     stdin_open: true
     tty: true
     volumes:
-      - ../src/dsp-mlflow:/home/workspaces/DSP-compose/dsp-mlflow/
+      - ../src/mlflow:/home/workspaces/BigData/mlflow/
     entrypoint: [./startup-script.sh]
     ports:
       - 5001:5001
@@ -55,15 +55,15 @@ services:
       dockerfile: ../.devcontainer/docker/Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ..:/home/workspaces/DSP-compose/
-    working_dir: /home/workspaces/DSP-compose/
+      - ..:/home/workspaces/BigData/
+    working_dir: /home/workspaces/BigData/
     command: [./startup-script.sh]
     stdin_open: true
     tty: true
     depends_on:
-      - dsp-streamlit
-      - dsp-dagster
-      - dsp-mlflow
+      - streamlit
+      - orchestration
+      - mlflow
 networks:
   default:
     driver: bridge

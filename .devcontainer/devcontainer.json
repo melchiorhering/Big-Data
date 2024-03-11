@@ -2,9 +2,9 @@
   // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
   // https://github.com/microsoft/vscode-dev-containers/tree/v0.217.4/containers/go
 
-  "name": "DSP-Storm-Damage-on-Urban-Areas",
+  "name": "BigData",
   "service": "workspace",
-  "workspaceFolder": "/home/workspaces/DSP-compose",
+  "workspaceFolder": "/home/workspaces/BigData",
   "forwardPorts": ["3000:3000", "8501:8501", "5001:5001"],
   "shutdownAction": "stopCompose",
   "dockerComposeFile": ["docker-compose.yaml"],
