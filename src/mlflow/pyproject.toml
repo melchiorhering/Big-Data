@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dsp-mlflow"
+name = "mlflow"
 version = "0.1.0"
 description = ""
 authors = ["Stijn Hering <stijn@hering.nl>"]

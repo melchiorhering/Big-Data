@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dsp-dagster"
+name = "orchestration"
 version = "0.1.0"
 description = "Dagster pyproject.toml"
 authors = ["Stijn Hering <stijn@hering.nl>"]

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dsp-streamlit"
+name = "streamlit"
 version = "0.1.0"
 description = "DSP Streamlit package"
 authors = ["Stijn Hering <stijn@hering.nl>"]
