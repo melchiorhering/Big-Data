@@ -1,7 +1,7 @@
 import geopandas as gpd
 import pandas as pd
 import polars as pl
-from dagster import (
+from dagtser import (
     AssetExecutionContext,
     Config,
     MetadataValue,

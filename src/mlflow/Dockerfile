@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.11-buster as builder
+FROM --platform=linux/amd64 python:3.11-buster
 
 # Update and upgrade the package list, install necessary packages, and clean up
 RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
@@ -10,7 +10,7 @@ ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_CREATE=0 \
     POETRY_CACHE_DIR=/tmp/poetry_cache
 
-FROM python:3.11-slim-buster as runtime
+RUN poetry install --no-interaction --no-ansi --only main --no-root
+# poetry update --no-interaction
 
-# Update
-RUN apt-get update && rm -rf /var/lib/apt/lists/*
+ENTRYPOINT poetry run mlflow server --backend-store-uri sqlite:///mlruns.db -h 0.0.0.0 -p 5001

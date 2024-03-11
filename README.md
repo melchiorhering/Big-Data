@@ -1,6 +1,13 @@
 # Big Data
 
-Run this project using Docker and Dev Containers, or use it local with Poetry
+Run this project using Docker and [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) or use [Poetry](https://python-poetry.org/).
+
+
+```bash
+cd src/orchestration
+
+poetry install --no-root
+```
 
 ## Tools Used
 
