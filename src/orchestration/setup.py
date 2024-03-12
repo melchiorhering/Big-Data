@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="dsp-dagster",
+    name="Dagster Orchestration",
     version="0.1.0",
     author=["Stijn Hering", "etc", "etc"],
     description="TO-DO",
