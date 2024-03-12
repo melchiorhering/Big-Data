@@ -32,7 +32,7 @@ poetry install --no-root
 <table style="width:100%">
   <tr>
     <td style="width:33%; text-align:center;"><a href="https://python-poetry.org/"><img src="./images/poetry-logo.png" alt="Poetry" title="Poetry" style="width:60%"/></a></td>
-    <td style="width:33%; text-align:center;"><a href="https://pola.rs/"><img src="./images/polars.png" alt="Polars" title="Polars" style="width:60%"/></a></td>
+    <td style="width:33%; text-align:center;"><a href="https://pola.rs/"><img src="./images/polars.png" alt="Polars" title="Polars" style="width:80%"/></a></td>
     <td style="width:33%; text-align:center;"><a href="https://duckdb.org/"><img src="./images/duckdb.png" alt="DuckDB" title="DuckDB" style="width:60%"/></a></td>
   </tr>
 </table>
