@@ -1,5 +1,7 @@
 #!/bin/bash
 
+poetry run ipython kernel install --user --name=BIG-DATA --display-name="BIG-DATA"
+
 # Define the URL of the GitHub repository
 REPO_URL="https://github.com/hazourahh/big-data-course-2024-projects.git"
 

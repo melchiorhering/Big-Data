@@ -4,13 +4,7 @@ FROM --platform=linux/amd64 python:3.11-bookworm as builder
 WORKDIR /workspaces/Big-Data
 
 # Update and upgrade the package list, install necessary packages, and clean up
-RUN apt-get update && apt-get -y install git zsh curl && rm -rf /var/lib/apt/lists/*
-
-# Install oh-my-zsh and the dieter theme
-RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="dieter"/' /root/.zshrc && usermod -s $(which zsh) $(whoami)
-
-# Copy your .zshrc file into the Docker container
-COPY .zshrc /root/.zshrc
+RUN apt-get update && apt-get -y install git curl && rm -rf /var/lib/apt/lists/*
 
 RUN pip install poetry
 
@@ -22,9 +16,6 @@ ENV POETRY_NO_INTERACTION=1 \
 COPY pyproject.toml poetry.lock ./
 
 RUN poetry install --no-interaction --no-ansi --no-root
-
-# Install IPython kernel - useful if you're running Jupyter inside the container
-RUN poetry run ipython kernel install --user --name=DSP --display-name="BIG-DATA"
 
 # Runtime stage
 FROM python:3.11-bookworm as runtime

@@ -33,6 +33,8 @@ Here are the combined instructions for setting up and running a devcontainer in 
    - Select the project folder and click on the `Open` button.
    - A new window will open, and the devcontainer will start building. This might take a few minutes.
 
+Please note that starting up the container for the first time may take a while as it needs to download and install all the necessary components.
+
 Now, you're running your project inside a devcontainer in Visual Studio Code!
 
 ## Tools Used
