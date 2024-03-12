@@ -37,6 +37,31 @@ Please note that starting up the container for the first time may take a while a
 
 Now, you're running your project inside a devcontainer in Visual Studio Code!
 
+## Poetry
+
+**Adding packages with Poetry:**
+
+- Open the terminal in Visual Studio Code.
+- Run `poetry add <package-name>` to add a new package to your project. Replace `<package-name>` with the name of the package you want to add.
+
+**Using the Poetry shell:**
+
+- Open the terminal in Visual Studio Code.
+- Run `poetry shell` to start a new shell session with the virtual environment activated.
+
+## Notebooks
+
+You can find and create Jupyter notebooks in the `src/notebooks/` directory.
+
+To work with a notebook inside Visual Studio Code:
+
+1. Navigate to the `src/notebooks/` directory in the Explorer pane.
+2. Click on the notebook file you want to open, or create a new one by right-clicking in the Explorer pane and selecting `New File`. Name your file with a `.ipynb` extension.
+3. The notebook will open in a new tab, and you can start working with it directly in Visual Studio Code.
+4. To select the Poetry kernel, go to the 'Kernel' menu in the toolbar, click on 'Change kernel', then under 'Python Environments', select the kernel named something like `big-data-<someweird-code>`.
+
+Note: To work with Jupyter notebooks in Visual Studio Code, you may need to install the `Python` and `Jupyter` extensions. You can do this by clicking on the Extensions view icon on the Sidebar (or press `Ctrl+Shift+X` on Windows, `Cmd+Shift+X` on MacOS), then search for and install the `Python` and `Jupyter` extensions.
+
 ## Tools Used
 
 ### `Backend`

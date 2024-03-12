@@ -1,6 +1,8 @@
 #!/bin/bash
 
-poetry run ipython kernel install --user --name=BIG-DATA --display-name="BIG-DATA"
+poetry install --no-root
+
+# poetry run ipython kernel install --user --name=BIG-DATA --display-name="BIG-DATA"
 
 # Define the URL of the GitHub repository
 REPO_URL="https://github.com/hazourahh/big-data-course-2024-projects.git"
@@ -37,6 +39,8 @@ cd ..
 
 # Remove the temporary directory
 rm -rf temp
+
+git config --global --add safe.directory /workspaces/Big-Data
 
 # Keep the container running - this is a common pattern for Devcontainers
 tail -f /dev/null

@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Big Data Project"
 authors = ["Author"]
 readme = "README.md"
-
+package-mode = false
 
 [tool.jupysql.SqlMagic]
 displaycon = false
@@ -42,6 +42,8 @@ requests-toolbelt = "0.10.1"
 pygwalker = "^0.3.20"
 pre-commit = "^3.6.0"
 seaborn = "^0.13.1"
+polars = "^0.20.15"
+pyspark = "^3.5.1"
 
 
 [build-system]
