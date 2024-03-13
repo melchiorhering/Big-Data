@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "BIG-DATA"
+name = "Big-Data"
 version = "0.1.0"
 description = "Big Data Project"
 authors = ["Author"]
@@ -17,7 +17,6 @@ python = "^3.10"
 plotly = "^5.18.0"
 dagster = "^1.5.13"
 dagster-webserver = "^1.5.13"
-dagster-mlflow = "^0.21.13"
 dagster-duckdb = "^0.21.13"
 dagster-duckdb-pandas = "^0.21.13"
 dagster-duckdb-polars = "^0.21.13"
@@ -33,7 +32,6 @@ xgboost = "^2.0.3"
 scikit-learn = "^1.3.2"
 ruff = "^0.1.9"
 spelling = "^1.2.1"
-jupyter = "^1.0.0"
 ipykernel = "^6.27.1"
 ipython = "^8.19.0"
 requests = "^2.30.0"
@@ -45,6 +43,8 @@ seaborn = "^0.13.1"
 polars = "^0.20.15"
 pyspark = "^3.5.1"
 
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]

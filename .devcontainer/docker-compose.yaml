@@ -1,5 +1,33 @@
 version: "3.8"
 services:
+  spark:
+    image: bitnami/spark:3
+    networks:
+      - default
+    ports:
+      - 8080:8080 # Spark master web UI
+      - 7077:7077 # Spark master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+  spark-worker:
+    image: bitnami/spark:3
+    networks:
+      - default
+    depends_on:
+      - spark
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=4G # Total memory for all cores
+      - SPARK_WORKER_CORES=4 # Number of cores
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
   orchestration:
     networks:
       - default
