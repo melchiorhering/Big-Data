@@ -26,7 +26,14 @@ def download_and_load(file_name: str) -> pl.DataFrame:
     with open(temp_file_path, 'wb') as temp_file:
         temp_file.write(response.content)
 
-    df = pl.read_csv(temp_file_path, has_header=True, truncate_ragged_lines=True, low_memory=True)
+    df = pl.read_csv(temp_file_path, 
+                     has_header=True, 
+                     separator="\t", 
+                     null_values="\\N",
+                     truncate_ragged_lines=True,
+                     ignore_errors=True, ## Check this
+                     low_memory=True)  
+
     os.remove(temp_file_path)  # Clean up the temporary file
     return df
 

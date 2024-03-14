@@ -12,6 +12,6 @@ from dagster_duckdb_polars import DuckDBPolarsIOManager
 LOCAL_RESOURCE = {
     "local_io_manager": FilesystemIOManager(base_dir="result/local/"),
     "database_io_manager": DuckDBPolarsIOManager(
-        database="./db/bigdata.duckdb"
+        database="./bigdata.duckdb"
     ),  # Define the I/O manager here
 }
