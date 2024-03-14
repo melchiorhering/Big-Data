@@ -1,7 +1,7 @@
 # Build stage
 FROM --platform=linux/amd64 python:3.10-slim-bullseye as builder
 
-WORKDIR /workspaces/orchestration
+WORKDIR /workspaces/Big-Data/src/orchestration
 
 # Update and upgrade the package list, install necessary packages, and clean up
 RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
@@ -20,9 +20,9 @@ RUN poetry install --no-interaction --no-ansi --only main --no-root
 # Runtime stage
 FROM python:3.10-slim-bullseye as runtime
 
-WORKDIR /workspaces/orchestration
+WORKDIR /workspaces/Big-Data/src/orchestration
 
-ENV DAGSTER_HOME=/workspaces/orchestration/src
+ENV DAGSTER_HOME=/workspaces/Big-Data/src/orchestration/src
 
 # Change the Python version here to match the builder stage
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages

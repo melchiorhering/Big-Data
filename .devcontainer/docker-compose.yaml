@@ -56,12 +56,11 @@ services:
     build:
       context: ../src/orchestration
       dockerfile: ./Dockerfile
-    working_dir: /workspaces/orchestration
+    working_dir: /workspaces/Big-Data/src/orchestration
     stdin_open: true
     tty: true
     volumes:
-      - ../data:/workspaces/data
-      - ../src/orchestration:/workspaces/orchestration
+      - ..:/workspaces/Big-Data/
     ports:
       - 3000:3000
   workspace:
@@ -70,6 +69,7 @@ services:
     build:
       context: ../
       dockerfile: ./Dockerfile
+    working_dir: /workspaces/Big-Data
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ..:/workspaces/Big-Data/
@@ -77,7 +77,7 @@ services:
     tty: true
     depends_on:
       - orchestration
-    working_dir: /workspaces/Big-Data
+
 networks:
   default:
     driver: bridge
