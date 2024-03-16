@@ -21,6 +21,7 @@ faker = "^21.0.0"
 requests = "^2.30.0"
 urllib3 = "^1.26"
 requests-toolbelt = "0.10.1"
+pyspark = "^3.5.1"
 
 [build-system]
 requires = ["setuptools"]

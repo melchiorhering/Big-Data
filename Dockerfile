@@ -4,7 +4,7 @@ FROM --platform=linux/amd64 python:3.10-slim-bullseye
 WORKDIR /workspaces/Big-Data
 
 # Install Java and other dependencies
-RUN apt-get update && apt-get -y install git curl default-jdk procps && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get -y install git curl default-jdk procps --fix-missing && rm -rf /var/lib/apt/lists/*
 
 # Set JAVA_HOME environment variable
 # ENV JAVA_HOME=/usr/lib/jvm/default-java
