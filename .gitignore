@@ -2,12 +2,8 @@ data/
 *tmp*/
 *.db
 *.duckdb
-src/dsp-dagster/storage/*
-src/dsp-dagster/data/*
 *mlruns/*
 
-src/dsp-dagster/data_systems_project.duckdb
-src/dsp-streamlit/data_systems_project.duckdb
 
 *logs
 *history

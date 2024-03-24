@@ -43,6 +43,9 @@ seaborn = "^0.13.1"
 polars = "^0.20.15"
 pyspark = "^3.5.1"
 opendatasets = "^0.1.22"
+pymoviedb = "^0.0.9"
+rottentomatoes-python = "^0.6.5"
+rotten-tomatoes-client = "^0.0.3"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

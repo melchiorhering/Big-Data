@@ -1,6 +1,8 @@
 from typing import Optional
 import polars as pl
 import pyarrow as pa
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField
 import pyspark
 import duckdb
 from IPython.display import display
@@ -35,6 +37,31 @@ class DuckDBContext:
         df.create(table_name)
         row_count = self.conn.query(f"SELECT COUNT(*) FROM {table_name}").fetchone()[0]
         print(f"CREATED TABLE: {table_name} WITH {row_count} ROWS!")
+
+    def to_spark(
+        self, table_name: str, spark: SparkSession = None
+    ) -> pyspark.sql.DataFrame:
+        # Query to get all rows from the table
+        result = self.conn.execute(f"SELECT * FROM {table_name}")
+
+        print(result.description)
+
+        # Retrieve the schema from the result
+        schema = StructType(
+            [StructField(name, dtype) for name, dtype in result.description]
+        )
+
+        # Convert the result to a pandas DataFrame
+        pandas_df = result.fetchdf()
+
+        # If no SparkSession was provided, create a new one
+        if spark is None:
+            spark = SparkSession.builder.getOrCreate()
+
+        # Convert the pandas DataFrame to a Spark DataFrame using the schema
+        spark_df = spark.createDataFrame(pandas_df, schema=schema)
+
+        return spark_df
 
     def show_n(self, table_name: str, n: int = 10):
         try:
