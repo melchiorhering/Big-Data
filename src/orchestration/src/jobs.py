@@ -1,6 +1,6 @@
 from dagster import AssetSelection, define_asset_job
 
-from .assets import EXTRACT, TRANSFORM, LOAD
+from .assets import EXTRACT, LOAD, TRANSFORM
 
 extract_data = define_asset_job(
     "extract_data", selection=AssetSelection.groups(EXTRACT)
