@@ -1,11 +1,12 @@
 from typing import Optional
+
+import duckdb
 import polars as pl
 import pyarrow as pa
-from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StructField
 import pyspark
-import duckdb
 from IPython.display import display
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructField, StructType
 
 
 class DuckDBContext:

@@ -1,6 +1,6 @@
 from dagster import load_assets_from_package_module
 
-from . import extract, transform, load
+from . import extract, load, transform
 
 EXTRACT = "extraction"
 TRANSFORM = "transformation"
