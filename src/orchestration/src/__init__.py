@@ -2,14 +2,9 @@ import os
 
 from dagster import Definitions
 
-from .assets import (
-    extraction_assets,
-    transformation_assets,
-    loading_assets,
-)
-from .jobs import extract_data, transform_data, load_data
+from .assets import extraction_assets, loading_assets, transformation_assets
+from .jobs import extract_data, load_data, transform_data
 from .resources import LOCAL_RESOURCE
-
 
 # Loads all assets
 all_assets = [
